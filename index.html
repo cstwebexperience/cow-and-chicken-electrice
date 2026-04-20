@@ -131,9 +131,10 @@ button{font:inherit;border:none;background:none;color:inherit}
 /* HERO — full-bleed slot */
 /* ============================================ */
 .hero{
-  height:100vh;
-  min-height:600px;
-  padding:100px 16px 20px;
+  margin-top:96px;
+  height:calc(100vh - 96px);
+  min-height:520px;
+  padding:20px 16px 20px;
   position:relative;
   display:flex;
 }
@@ -750,22 +751,6 @@ button{font:inherit;border:none;background:none;color:inherit}
 #bird{right:16px;top:60%;width:44px;height:56px;}
 
 /* ============================================ */
-/* SCROLL PROGRESS */
-/* ============================================ */
-.scroll-progress{
-  position:fixed;top:0;left:0;right:0;height:6px;
-  background:rgba(10,14,46,0.08);
-  z-index:200;
-}
-.scroll-progress-bar{
-  height:100%;
-  background:var(--red);
-  width:0%;
-  border-right:3px solid var(--ink);
-  transition:width 0.1s;
-}
-
-/* ============================================ */
 /* FLOATING WHATSAPP */
 /* ============================================ */
 .wa-float{
@@ -846,11 +831,12 @@ button{font:inherit;border:none;background:none;color:inherit}
   .nav{top:10px;left:10px;right:10px;padding:10px 14px}
   .brand-text-top{font-size:17px}
 
-  /* hero — full screen like desktop */
+  /* hero — starts below navbar */
   .hero{
-    min-height:100vh;
-    min-height:100svh;
-    padding:72px 8px 8px;
+    margin-top:72px;
+    height:calc(100svh - 72px);
+    min-height:480px;
+    padding:12px 8px 8px;
   }
   .hero-slot{
     border-radius:16px;
@@ -957,7 +943,7 @@ button{font:inherit;border:none;background:none;color:inherit}
 
 /* short screens / small laptops — hero text nu iese din cadru */
 @media(max-height:700px){
-  .hero{padding-top:80px;padding-bottom:12px}
+  .hero{margin-top:80px;height:calc(100vh - 80px);padding-top:12px;padding-bottom:12px}
   .hero-word{font-size:clamp(32px,6vw,72px)}
   .hero-main-title{margin-bottom:10px}
   .hero-sub{margin-bottom:10px;font-size:11px}
@@ -1114,9 +1100,6 @@ button{font:inherit;border:none;background:none;color:inherit}
 </style>
 <link id="gfont-Inter" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap"></head>
 <body style="cursor: crosshair; font-family: Inter;" data-cc-id="cc-1">
-
-<!-- SCROLL PROGRESS -->
-<div class="scroll-progress"><div class="scroll-progress-bar" id="progressBar" style="width: 7.03807%;"></div></div>
 
 <!-- NAVBAR -->
 <nav class="nav scrolled" id="nav">
@@ -1766,13 +1749,6 @@ button{font:inherit;border:none;background:none;color:inherit}
 </div>
 
 <script>
-  // Scroll progress
-  const bar = document.getElementById('progressBar');
-  window.addEventListener('scroll', () => {
-    const h = document.documentElement.scrollHeight - window.innerHeight;
-    const p = (window.scrollY / h) * 100;
-    bar.style.width = p + '%';
-  });
 
   // Nav scrolled
   const nav = document.getElementById('nav');
