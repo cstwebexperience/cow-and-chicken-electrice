@@ -155,10 +155,12 @@ button{font:inherit;border:none;background:none;color:inherit}
   content:"";position:absolute;inset:0;
   background:radial-gradient(circle at 20% 20%,rgba(255,214,10,0.15),transparent 40%),radial-gradient(circle at 80% 80%,rgba(92,195,245,0.15),transparent 40%);
 }
-/* dark gradient at bottom so text is always readable */
+/* desktop: left-side gradient panel where text sits */
 .hero-slot::after{
   content:"";position:absolute;inset:0;z-index:3;
-  background:linear-gradient(to top, rgba(10,14,46,0.72) 0%, rgba(10,14,46,0.2) 35%, transparent 60%);
+  background:
+    linear-gradient(to right, rgba(10,14,46,0.88) 0%, rgba(10,14,46,0.55) 38%, rgba(10,14,46,0.1) 60%, transparent 75%),
+    linear-gradient(to top, rgba(10,14,46,0.5) 0%, transparent 35%);
   pointer-events:none;
 }
 
@@ -843,22 +845,28 @@ button{font:inherit;border:none;background:none;color:inherit}
     box-shadow:5px 5px 0 var(--ink);
     border-width:3px;
   }
-  /* video — contain pe mobil ca să se vadă tot cadrul cu vaca+gaina */
+  /* mobile: cover fills screen, crop sides slightly — main content stays visible */
   .hero-slot video{
-    object-fit:contain;
-    background:var(--blue-deep);
+    object-fit:cover;
+    background:transparent;
   }
-  /* stickers repositioned so they don't cover text */
-  .hero-sticker.boom{bottom:auto;top:10%;left:4%}
-  .hero-sticker.pow{bottom:auto;top:16%;right:4%}
-  .hero-sticker.zap1{top:6%;left:4%}
-  .hero-sticker.zap2{top:6%;right:6%}
-  /* text overlay — sus in spatiul albastru liber */
+  /* mobile: strong bottom gradient for text contrast */
+  .hero-slot::after{
+    background:linear-gradient(to top,
+      rgba(10,14,46,0.96) 0%,
+      rgba(10,14,46,0.8) 35%,
+      rgba(10,14,46,0.3) 62%,
+      transparent 80%);
+  }
+  /* hide stickers on mobile — too cluttered */
+  .hero-sticker{display:none}
+  /* text overlay — bottom, on top of gradient */
   .hero-text-overlay{
-    top:10px;bottom:auto;
+    top:auto;
+    bottom:28px;
     transform:none;
-    left:14px;right:14px;
-    max-width:calc(100vw - 28px);
+    left:20px;right:20px;
+    max-width:100%;
   }
   .hero-word{
     font-size:clamp(36px,11vw,62px);
@@ -1009,7 +1017,6 @@ button{font:inherit;border:none;background:none;color:inherit}
   pointer-events:none;
   max-width:660px;
 }
-@media(max-width:700px){.hero-text-overlay{left:20px}}
 
 .hero-tag{
   font-family:'JetBrains Mono',monospace;
