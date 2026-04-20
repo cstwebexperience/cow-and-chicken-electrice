@@ -853,9 +853,11 @@ button{font:inherit;border:none;background:none;color:inherit}
   .hero-sticker.pow{bottom:auto;top:16%;right:4%}
   .hero-sticker.zap1{top:6%;left:4%}
   .hero-sticker.zap2{top:6%;right:6%}
-  /* text overlay */
+  /* text overlay — sus in spatiul albastru liber */
   .hero-text-overlay{
-    left:14px;bottom:16px;
+    top:10px;bottom:auto;
+    transform:none;
+    left:14px;right:14px;
     max-width:calc(100vw - 28px);
   }
   .hero-word{
@@ -949,7 +951,7 @@ button{font:inherit;border:none;background:none;color:inherit}
   .hero-sub{margin-bottom:10px;font-size:11px}
   .hero-btn-primary,.hero-btn-secondary{font-size:15px;padding:8px 18px}
   .hero-tag{margin-bottom:8px}
-  .hero-text-overlay{bottom:14px}
+  .hero-text-overlay{top:50%;transform:translateY(-50%)}
 }
 
 /* ============================================ */
@@ -1001,12 +1003,13 @@ button{font:inherit;border:none;background:none;color:inherit}
 /* ============================================ */
 .hero-text-overlay{
   position:absolute;
-  bottom:48px;left:48px;
+  top:50%;transform:translateY(-50%);
+  left:48px;
   z-index:10;
   pointer-events:none;
-  max-width:700px;
+  max-width:660px;
 }
-@media(max-width:700px){.hero-text-overlay{left:20px;bottom:28px}}
+@media(max-width:700px){.hero-text-overlay{left:20px}}
 
 .hero-tag{
   font-family:'JetBrains Mono',monospace;
